@@ -1,0 +1,31 @@
+{{template "base" .}}
+{{define "title"}}{{.Category}} News{{end}}
+{{define "main"}}
+<h2>{{.Category}} News</h2>
+{{if .NewsArray}}
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Date of Created</th>
+        <th>ID</th>
+    </tr>
+    {{range .NewsArray}}
+    <tr>
+        <td><a href='/news?id={{.ID}}'>{{.Title}}</a></td>
+        <td>{{.Date}}</td>
+        <td>#{{.ID}}</td>
+        <td>
+            <button type="button" class="btn btn-danger" onclick="deleteNewsById({{.ID}})">Delete</button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-update" onclick="UpdateNewsById({{.ID}})">Update</button>
+        </td>
+        <!-- Add an ID to the update button for easy selection -->
+
+    </tr>
+    {{end}}
+</table>
+{{else}}
+<p>No news available in the {{.Category}} category.</p>
+{{end}}
+{{end}}
