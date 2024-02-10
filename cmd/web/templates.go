@@ -1,15 +1,19 @@
 package main
 
 import (
-	"NewsAituuu-main/pkg/models"
 	"html/template"
+	"news-project/pkg/models"
 	"path/filepath"
 )
 
 type templateData struct {
-	News      *models.News
-	NewsArray []*models.News
-	Category  string
+	News *models.News
+
+	Flash          string
+	NewsArray      []*models.News
+	Category       string
+	SuccessMessage string // Добавлено поле для сообщения об успехе
+	ErrorMessage   string // Добавлено поле для сообщения об ошибке
 }
 
 func newTemplateCache(dir string) (map[string]*template.Template, error) {

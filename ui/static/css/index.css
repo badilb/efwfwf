@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -66,13 +67,6 @@ textarea, input:not([type="submit"]) {
 }
 
 header {
-    background-image: -webkit-linear-gradient(left, #34495e, #34495e 25%, #9b59b6 25%, #9b59b6 35%, #3498db 35%, #3498db 45%, #62cb31 45%, #62cb31 55%, #ffb606 55%, #ffb606 65%, #e67e22 65%, #e67e22 75%, #e74c3c 85%, #e74c3c 85%, #c0392b 85%, #c0392b 100%);
-    background-image: -moz-linear-gradient(left, #34495e, #34495e 25%, #9b59b6 25%, #9b59b6 35%, #3498db 35%, #3498db 45%, #62cb31 45%, #62cb31 55%, #ffb606 55%, #ffb606 65%, #e67e22 65%, #e67e22 75%, #e74c3c 85%, #e74c3c 85%, #c0392b 85%, #c0392b 100%);
-    background-image: -ms-linear-gradient(left, #34495e, #34495e 25%, #9b59b6 25%, #9b59b6 35%, #3498db 35%, #3498db 45%, #62cb31 45%, #62cb31 55%, #ffb606 55%, #ffb606 65%, #e67e22 65%, #e67e22 75%, #e74c3c 85%, #e74c3c 85%, #c0392b 85%, #c0392b 100%);
-    background-image: linear-gradient(to right, #34495e, #34495e 25%, #9b59b6 25%, #9b59b6 35%, #3498db 35%, #3498db 45%, #62cb31 45%, #62cb31 55%, #ffb606 55%, #ffb606 65%, #e67e22 65%, #e67e22 75%, #e74c3c 85%, #e74c3c 85%, #c0392b 85%, #c0392b 100%);
-    background-size: 100% 6px;
-    background-repeat: no-repeat;
-    border-bottom: 1px solid #E4E5E7;
     overflow: auto;
     padding-top: 33px;
     padding-bottom: 27px;
@@ -173,16 +167,7 @@ form input[type="radio"] {
     margin-left: 18px;
 }
 
-form input[type="text"], form input[type="password"], form input[type="email"] {
-    padding: 0.75em 18px;
-    width: 100%;
-}
-form input[type=text], form input[type="password"], form input[type="email"], textarea {
-    color: #6A6C6F;
-    background: #FFFFFF;
-    border: 1px solid #E4E5E7;
-    border-radius: 3px;
-}
+
 
 form label {
     display: inline-block;
@@ -311,3 +296,19 @@ footer {
     color: #6A6C6F;
     text-align: center;
 }
+
+.alert-success {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.alert-success .btn-close {
+    color: #155724;
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-height: 1;
+    text-shadow: 0 1px 0 #fff;
+}
+

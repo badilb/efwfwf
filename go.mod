@@ -1,4 +1,4 @@
-module NewsAituuu-main
+module news-project
 
 go 1.20
 

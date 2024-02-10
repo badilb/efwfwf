@@ -1,12 +1,12 @@
 package main
 
 import (
-	mysql "NewsAituuu-main/pkg/models/postgresql"
 	"database/sql"
 	"flag"
 	"html/template"
 	"log"
 	"net/http"
+	mysql "news-project/pkg/models/postgresql"
 	"os"
 )
 
@@ -18,7 +18,7 @@ type application struct {
 }
 
 func main() {
-	addr := flag.String("addr", ":8790", "HTTP network address")
+	addr := flag.String("addr", "localhost:7777", "HTTP network address")
 	flag.Parse()
 	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
 	errorLog := log.New(os.Stderr, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)

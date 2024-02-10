@@ -26,8 +26,13 @@ func (app *application) render(w http.ResponseWriter, r *http.Request, name stri
 		app.serverError(w, fmt.Errorf("The template %s does not exist", name))
 		return
 	}
+
+	td.Flash = "Your flash message here"
+
 	err := ts.Execute(w, td)
 	if err != nil {
 		app.serverError(w, err)
+
+		return
 	}
 }

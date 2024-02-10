@@ -8,7 +8,6 @@ func (app *application) routes() *http.ServeMux {
 	mux.HandleFunc("/news", app.showNews)
 	mux.HandleFunc("/news/delete", app.deleteNews)
 	mux.HandleFunc("/news/create", app.createNews)
-	mux.HandleFunc("/news/update", app.updateNews)
 	mux.HandleFunc("/news/creationPage", app.creationPage)
 	mux.HandleFunc("/news/sport", app.filterCategory("Sports"))
 	mux.HandleFunc("/news/politics", app.filterCategory("Politics"))

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"NewsAituuu-main/pkg/models"
 	"errors"
 	"fmt"
 	"html/template"
 	"net/http"
+	"news-project/pkg/models"
 	"strconv"
 )
 
@@ -65,32 +65,6 @@ func (app *application) creationPage(w http.ResponseWriter, r *http.Request) {
 	app.render(w, r, "create.page.tmpl", &templateData{})
 }
 
-func (app *application) updateNews(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPut {
-		w.Header().Set("Allow", http.MethodPost)
-		app.clientError(w, http.StatusMethodNotAllowed)
-		return
-	}
-
-	id, err := strconv.Atoi(r.FormValue("id"))
-	if err != nil || id < 1 {
-		app.notFound(w)
-		return
-	}
-
-	title := r.FormValue("title")
-	content := r.FormValue("content")
-	category := r.FormValue("category")
-
-	err = app.news.UpdateNewsById(id, title, content, category)
-	if err != nil {
-		app.serverError(w, err)
-		return
-	}
-
-	http.Redirect(w, r, fmt.Sprintf("/news?id=%d", id), http.StatusSeeOther)
-}
-
 func (app *application) deleteNews(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodDelete {
 		w.Header().Set("Allow", http.MethodPost)
@@ -126,11 +100,19 @@ func (app *application) createNews(w http.ResponseWriter, r *http.Request) {
 	content := r.FormValue("content")
 	category := r.FormValue("category")
 
+	successMessage := "News created successfully!"
+	td := &templateData{
+		SuccessMessage: successMessage,
+	}
+
+	app.render(w, r, "create.page.tmpl", td)
+
 	id, err := app.news.Insert(title, content, category)
 	if err != nil {
 		app.serverError(w, err)
 		return
 	}
+
 	http.Redirect(w, r, fmt.Sprintf("/news?id=%d", id), http.StatusSeeOther)
 }
 

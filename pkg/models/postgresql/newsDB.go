@@ -1,10 +1,10 @@
-package mysql
+package postgresql
 
 import (
-	"NewsAituuu-main/pkg/models"
 	"database/sql"
 	"errors"
 	_ "github.com/lib/pq"
+	"news-project/pkg/models"
 )
 
 type NewsModel struct {
@@ -84,20 +84,6 @@ func (m *NewsModel) GetByCategory(category string) ([]*models.News, error) {
 		return nil, err
 	}
 	return newsArray, nil
-}
-
-func (m *NewsModel) UpdateNewsById(id int, title, content, category string) error {
-	stmt := `
-        UPDATE FROM news WHERE id
-        SET title = $2, content = $3, category = $4
-        WHERE id = $1`
-
-	_, err := m.DB.Exec(stmt, id, title, content, category)
-	if err != nil {
-		return err
-	}
-
-	return nil
 }
 
 func (m *NewsModel) DeleteNewsById(id int) error {
